@@ -1,0 +1,25 @@
+#配置服务相关信息
+server:
+  port: 8080
+  address: 127.0.0.1
+
+spring:
+  #数据库连接配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://121.37.9.218:3306/school_system
+    username: root
+    password: 123456
+
+#mybaits配置
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #驼峰命名自动映射
+    map-underscore-to-camel-case: true
+
+
+#spring事务管理日志
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
