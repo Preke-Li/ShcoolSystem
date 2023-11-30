@@ -14,5 +14,5 @@ public interface CardMapper {
     @Update("UPDATE card SET balance = #{balance} WHERE id = #{id}")
     void updateCard(Card card);
 
-    // 可能还需要其他的查询、插入、更新方法
+
 }

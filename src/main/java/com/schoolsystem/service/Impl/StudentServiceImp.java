@@ -20,30 +20,27 @@ public class StudentServiceImp implements StudentService {
 
     @Override
     public double getCardBalance(int studentId) {
-        // 假设通过 studentId 存在 Student 和 Card 之间的关联关系
-        Student student = studentMapper.getStudentById(studentId);
-        if (student != null && student.getDormitoryId() != null) {
-            Card card = cardMapper.getCardById(student.getDormitoryId());
-            if (card != null) {
-                return Double.parseDouble(card.getBalance());
-            }
+        // 直接使用 studentId 查询 card 表
+        Card card = cardMapper.getCardById(studentId);
+
+        if (card != null) {
+            return Double.parseDouble(card.getBalance());
         }
-        return 0.0; // 如果未找到卡或学生，返回 0
+
+        return 0.0;
     }
 
     @Override
     @Transactional
     public void rechargeCard(int studentId, int amount) {
-        // 通过 studentId 存在 Student 和 Card 之间的关联关系
-        Student student = studentMapper.getStudentById(studentId);
-        if (student != null && student.getDormitoryId() != null) {
-            Card card = cardMapper.getCardById(student.getDormitoryId());
-            if (card != null) {
-                // 更新卡的余额
-                double newBalance = Double.parseDouble(card.getBalance()) + amount;
-                card.setBalance(String.valueOf(newBalance));
-                cardMapper.updateCard(card);
-            }
+        // 直接使用 studentId 查询 card 表
+        Card card = cardMapper.getCardById(studentId);
+
+        if (card != null) {
+            // 更新卡的余额
+            double newBalance = Double.parseDouble(card.getBalance()) + amount;
+            card.setBalance(String.valueOf(newBalance));
+            cardMapper.updateCard(card);
         }
 
     }
