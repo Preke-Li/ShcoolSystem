@@ -9,8 +9,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
-public class Student extends Account{
-//    private Integer id;
+public class Student extends Account {
+    //    private Integer id;
     private String name;
     private String phone;
 
@@ -20,8 +20,13 @@ public class Student extends Account{
 
     private Integer dormitory;
 
-//    private Short position;
-//    private String username;
-//
-//    private String password;
+    // Getter method for dormitory
+    public Integer getDormitoryId() {
+        return dormitory;
+    }
+
+    //    private Short position;
+    //    private String username;
+    //
+    //    private String password;
 }
