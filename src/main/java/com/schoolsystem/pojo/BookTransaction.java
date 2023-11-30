@@ -7,6 +7,7 @@ public class BookTransaction {
     private int studentId;
     private int bookId;
     private Date borrowDate;
+    private int status;
 
     // 默认构造函数
     public BookTransaction() {
@@ -42,5 +43,13 @@ public class BookTransaction {
 
     public void setBorrowDate(Date borrowDate) {
         this.borrowDate = borrowDate;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }
