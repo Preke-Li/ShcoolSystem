@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/student/card")
+@RequestMapping("/api/student")
 public class StudentController {
 
     @Autowired
     private StudentService studentService;
 
     // 4.1 查询校园卡余额
-    @GetMapping("/balance")
+    @GetMapping("/card/balance")
     public Result getCardBalance(@RequestBody Map<String, Integer> requestData) {
         try {
             int studentId = requestData.get("studentId");
@@ -28,7 +28,7 @@ public class StudentController {
     }
 
     // 4.2 校园卡充值
-    @PostMapping("/recharge")
+    @PostMapping("/card/recharge")
     public Result rechargeCard(@RequestBody Map<String, Integer> requestData) {
         try {
             int studentId = requestData.get("studentId");
