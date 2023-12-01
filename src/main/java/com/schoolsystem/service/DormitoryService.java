@@ -13,4 +13,8 @@ public interface DormitoryService {
     void rechargeElectricity(int studentId, int dormitoryId, int amount);
 
     List<DormitoryRecharge> getRechargeHistory(int dormitoryId);
+
+    double getWaterBalance(int dormitoryId);
+
+    void rechargeWater(int studentId, int dormitoryId, int amount);
 }

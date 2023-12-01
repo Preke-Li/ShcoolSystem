@@ -8,12 +8,12 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface DormitoryMapper {
 
-    @Select("SELECT * FROM dormitory WHERE id = #{dormitory_id}")
-    Dormitory getDormitoryById(int dormitory_id);
-
-//    @Select("SELECT * FROM dormitory WHERE id = (SELECT dormitory_id FROM student WHERE id = #{studentId})")
-//    Dormitory getDormitoryById(int studentId);
+    @Select("SELECT * FROM dormitory WHERE id = #{dormitoryId}")
+    Dormitory getDormitoryById(int dormitoryId);
 
     @Update("UPDATE dormitory SET electricity = #{electricity} WHERE id = #{id}")
     void updateDormitory(Dormitory dormitory);
+
+    @Update("UPDATE dormitory SET water = #{water} WHERE id = #{id}")
+    void updateDormitory1(Dormitory dormitory);
 }

@@ -22,5 +22,13 @@ public class Dormitory {
     public void setId(int id) {
         this.id = id;
     }
+
+    public int getWater() {
+        return water;
+    }
+
+    public void setWater(int water) {
+        this.water = water;
+    }
 }
 

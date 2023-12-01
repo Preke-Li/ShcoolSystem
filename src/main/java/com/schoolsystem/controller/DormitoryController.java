@@ -60,4 +60,38 @@ public class DormitoryController {
             return Result.error("查询充值记录失败：" + e.getMessage());
         }
     }
+
+    //  查询水费余额
+    @GetMapping("/water/balance")
+    public Result getWaterBalance(@RequestParam int dormitoryId) {
+        try {
+            double balance = dormitoryService.getWaterBalance(dormitoryId);
+            return Result.success(balance);
+        } catch (Exception e) {
+            return Result.error("查询水费余额失败：" + e.getMessage());
+        }
+    }
+
+    //  水费充值
+    @PostMapping("/water/recharge")
+    public Result rechargeWater(@RequestBody Map<String, Object> requestData) {
+        try {
+            Integer studentIdObj = (Integer) requestData.get("studentId");
+            Integer dormitoryIdObj = (Integer) requestData.get("dormitoryId");
+            Integer amountObj = (Integer) requestData.get("amount");
+
+            if (studentIdObj != null && dormitoryIdObj != null && amountObj != null) {
+                int studentId = studentIdObj.intValue();
+                int dormitoryId = dormitoryIdObj.intValue();
+                int amount = amountObj.intValue();
+
+                dormitoryService.rechargeWater(studentId, dormitoryId, amount);
+                return Result.success("水费充值成功");
+            } else {
+                return Result.error("请求参数缺失或格式不正确");
+            }
+        } catch (Exception e) {
+            return Result.error("水费充值失败：" + e.getMessage());
+        }
+    }
 }

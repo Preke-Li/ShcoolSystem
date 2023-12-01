@@ -57,4 +57,30 @@ public class DormitoryServiceImpl implements DormitoryService {
         return dormitoryRechargeMapper.getRechargeHistoryByDormitoryId(dormitoryId);
     }
 
+    @Override
+    public double getWaterBalance(int dormitoryId) {
+        Dormitory dormitory = dormitoryMapper.getDormitoryById(dormitoryId);
+
+        if (dormitory != null) {
+            return dormitory.getWater();
+        }
+
+        return 0.0;
+    }
+
+    @Override
+    @Transactional
+    public void rechargeWater(int studentId, int dormitoryId, int amount) {
+        Dormitory dormitory = dormitoryMapper.getDormitoryById(dormitoryId);
+
+        if (dormitory != null) {
+            // 更新水费余额
+            double newBalance = dormitory.getWater() + amount;
+            dormitory.setWater((int) newBalance);
+            dormitoryMapper.updateDormitory1(dormitory);
+
+        }
+    }
+
+
 }
