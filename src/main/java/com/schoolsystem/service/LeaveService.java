@@ -9,4 +9,6 @@ public interface LeaveService {
     void applyLeave(int studentId, String reason, int courseId, String beginDate, String endDate, String theme);
 
     List<LeaveApply> getLeaveProgress(int studentId);
+
+    void deleteLeaveApply(int leaveApplyId);
 }

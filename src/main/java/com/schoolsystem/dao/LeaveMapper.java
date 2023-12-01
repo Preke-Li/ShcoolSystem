@@ -1,9 +1,7 @@
 package com.schoolsystem.dao;
 
 import com.schoolsystem.pojo.LeaveApply;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -16,4 +14,7 @@ public interface LeaveMapper {
 
     @Select("SELECT * FROM leave_apply WHERE student_id = #{studentId}")
     List<LeaveApply> getLeaveProgress(int studentId);
+
+    @Delete("DELETE FROM leave_apply WHERE id = #{leaveApplyId}")
+    void deleteLeaveApply(int leaveApplyId);
 }

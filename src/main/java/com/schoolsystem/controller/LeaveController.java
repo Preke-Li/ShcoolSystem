@@ -45,4 +45,15 @@ public class LeaveController {
             return Result.error("查看请假进度失败：" + e.getMessage());
         }
     }
+
+    // 3.3 删除请假申请
+    @DeleteMapping("/delete")
+    public Result deleteLeaveApply(@RequestParam int leaveApplyId) {
+        try {
+            leaveService.deleteLeaveApply(leaveApplyId);
+            return Result.success("删除请假申请成功");
+        } catch (Exception e) {
+            return Result.error("删除请假申请失败：" + e.getMessage());
+        }
+    }
 }

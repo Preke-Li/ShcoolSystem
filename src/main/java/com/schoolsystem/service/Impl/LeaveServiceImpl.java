@@ -19,7 +19,7 @@ public class LeaveServiceImpl implements LeaveService {
     @Autowired
     private LeaveMapper leaveMapper;
 
-    @Transactional  //
+    @Transactional
     @Override
     public void applyLeave(int studentId, String reason, int courseId, String beginDate, String endDate, String theme) {
         // 创建 LeaveApply 对象并设置参数
@@ -46,6 +46,13 @@ public class LeaveServiceImpl implements LeaveService {
     public List<LeaveApply> getLeaveProgress(int studentId) {
         // 调用 leaveMapper 查询请假进度数据
         return leaveMapper.getLeaveProgress(studentId);
+    }
+
+    @Transactional
+    @Override
+    public void deleteLeaveApply(int leaveApplyId) {
+        // 调用 leaveMapper 删除请假申请
+        leaveMapper.deleteLeaveApply(leaveApplyId);
     }
 
     // 日期转换工具类
