@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface ClassMapper {
     /**
-     * 查询某个专业的所有班级信息
+     * 根据专业ID查找班级信息
      * @param majorId
      * @return
      */
@@ -21,4 +21,6 @@ public interface ClassMapper {
 
     @Insert("insert into class(class_name, people, monitor_id, major_id) VALUES (#{className},#{people},#{monitorId},#{majorId})")
     int insertClass(Class c);
+
+    int updateClass(Class c);
 }

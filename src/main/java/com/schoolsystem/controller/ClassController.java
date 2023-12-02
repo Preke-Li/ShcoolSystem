@@ -30,12 +30,22 @@ public class ClassController {
 
     @PostMapping("/class")
     public Result addClass(@RequestBody Class c) {
-        log.info("\n接收到的新增班级数据为：\n{}",c);
+        log.info("\n接收到的新增班级数据为：\n{}", c);
         int result = classService.addClass(c);
         if (result > 0)
             return Result.success();
         else
             return Result.error("新增失败");
+    }
+
+    @PutMapping("class")
+    public Result updateClass(@RequestBody Class c) {
+        log.info("\n要修改的部门信息为：{}", c);
+        int result = classService.updateClass(c);
+        if (result > 0)
+            return Result.success("更新成功");
+        else
+            return Result.error("更新失败");
     }
 
 }

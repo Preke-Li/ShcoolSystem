@@ -24,4 +24,9 @@ public class ClassServiceImp implements ClassService {
         return classMapper.insertClass(c);
     }
 
+    @Override
+    public int updateClass(Class c) {
+        return classMapper.updateClass(c);
+    }
+
 }

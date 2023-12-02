@@ -9,4 +9,6 @@ public interface ClassService {
     List<Class> getByMajorId(Integer majorId);
 
     int addClass(Class c);
+
+    int updateClass(Class c);
 }
