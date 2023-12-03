@@ -1,5 +1,6 @@
 package com.schoolsystem.dao;
 
+import com.schoolsystem.pojo.AdminApproval;
 import com.schoolsystem.pojo.LeaveApply;
 import org.apache.ibatis.annotations.*;
 
@@ -17,4 +18,13 @@ public interface LeaveMapper {
 
     @Delete("DELETE FROM leave_apply WHERE id = #{leaveApplyId}")
     void deleteLeaveApply(int leaveApplyId);
+
+    @Update("UPDATE leave_apply SET status = #{status} WHERE id = #{id}")
+    void updateLeaveApplyStatus(LeaveApply leaveApply);
+
+
+    @Select("SELECT * FROM leave_apply WHERE id = #{leaveApplyId}")
+    LeaveApply getLeaveDetail(int leaveApplyId);
+
+
 }

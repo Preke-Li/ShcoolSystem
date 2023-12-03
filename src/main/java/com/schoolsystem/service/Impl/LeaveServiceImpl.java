@@ -1,7 +1,9 @@
 package com.schoolsystem.service.Impl;
 
+import com.schoolsystem.dao.AdminApprovalMapper;
 import com.schoolsystem.dao.LeaveMapper;
 import com.schoolsystem.pojo.LeaveApply;
+import com.schoolsystem.pojo.AdminApproval;
 import com.schoolsystem.service.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,13 +13,18 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class LeaveServiceImpl implements LeaveService {
 
     @Autowired
     private LeaveMapper leaveMapper;
+
+    @Autowired
+    private AdminApprovalMapper adminApprovalMapper;
 
     @Transactional
     @Override
@@ -53,6 +60,25 @@ public class LeaveServiceImpl implements LeaveService {
     public void deleteLeaveApply(int leaveApplyId) {
         // 调用 leaveMapper 删除请假申请
         leaveMapper.deleteLeaveApply(leaveApplyId);
+    }
+
+    @Override
+    public LeaveApply getLeaveDetail(int leaveApplyId) {
+        // 调用 leaveMapper 获取请假详情
+        return leaveMapper.getLeaveDetail(leaveApplyId);
+    }
+
+    @Override
+    public Map<String, Object> getLeaveDetailWithApproval(int leaveApplyId) {
+        // 调用 leaveMapper 获取请假详情和审批信息
+        LeaveApply leaveApply = leaveMapper.getLeaveDetail(leaveApplyId);
+        AdminApproval adminApproval = adminApprovalMapper.getAdminApproval(leaveApplyId);
+
+        Map<String, Object> leaveDetailWithApproval = new HashMap<>();
+        leaveDetailWithApproval.put("leaveApply", leaveApply);
+        leaveDetailWithApproval.put("adminApproval", adminApproval);
+
+        return leaveDetailWithApproval;
     }
 
     // 日期转换工具类

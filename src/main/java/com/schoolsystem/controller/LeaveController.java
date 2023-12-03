@@ -56,4 +56,26 @@ public class LeaveController {
             return Result.error("删除请假申请失败：" + e.getMessage());
         }
     }
+
+    @GetMapping("/detail")
+    public Result getLeaveDetail(@RequestParam int leaveApplyId){
+        try {
+            LeaveApply leaveDetail = leaveService.getLeaveDetail(leaveApplyId);
+            return Result.success(leaveDetail);
+        } catch (Exception e) {
+            return Result.error("获取请假详情失败：" + e.getMessage());
+        }
+    }
+
+    @GetMapping("/detailWithApproval")
+    public Result getLeaveDetailWithApproval(@RequestParam int leaveApplyId){
+        try {
+            Map<String, Object> leaveDetailWithApproval = leaveService.getLeaveDetailWithApproval(leaveApplyId);
+            return Result.success(leaveDetailWithApproval);
+        } catch (Exception e) {
+            return Result.error("获取请假详情和审批信息失败：" + e.getMessage());
+        }
+    }
+
+
 }
