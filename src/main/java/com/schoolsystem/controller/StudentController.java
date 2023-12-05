@@ -39,6 +39,7 @@ public class StudentController {
             result.put("id",s.getId());
             result.put("major",majorService.getName(s.getMajorId()));
             result.put("position",s.getPosition());
+            result.put("dormitoryId",s.getDormitoryId());
             return Result.success(result);
         }
     }

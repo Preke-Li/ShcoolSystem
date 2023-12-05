@@ -16,7 +16,7 @@ public class Student extends Account{
 
     private Integer classId;
 
-    private Integer dormitory;
+    private Integer dormitoryId;
 
 //    private Short position;
 //    private String username;
