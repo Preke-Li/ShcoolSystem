@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.schoolsystem.dao.RegisterMapper">
+    <insert id="addUser" parameterType="com.schoolsystem.pojo.Account">
+        <choose>
+            <when test="position == 0">
+                insert into admin(username,password) values (#{username},#{password})
+            </when>
+            <when test="position == 1">
+                insert into student(username,password) values (#{username},#{password})
+            </when>
+        </choose>
+    </insert>
+</mapper>
