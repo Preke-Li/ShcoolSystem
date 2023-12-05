@@ -6,6 +6,6 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface StudentMapper {
-    @Select("select id, name, phone, major, position, class_id, username, dormitory_id from student where username=#{username}")
+    @Select("select id, name, phone, major_id, position, class_id, username, dormitory_id from student where username=#{username}")
     Student getInfoByUsername(String username);
 }

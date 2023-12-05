@@ -12,7 +12,7 @@ public class Student extends Account{
     private String name;
     private String phone;
 
-    private String major;
+    private Integer majorId;
 
     private Integer classId;
 
