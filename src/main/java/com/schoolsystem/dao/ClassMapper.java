@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface ClassMapper {
     /**
-     * 根据专业ID查找班级信息
+     * 根据Id查询班级
      * @param majorId
      * @return
      */
@@ -23,4 +23,7 @@ public interface ClassMapper {
     int insertClass(Class c);
 
     int updateClass(Class c);
+
+    @Select("select * from class where id = #{id}")
+    Class getByClassId(Integer id);
 }

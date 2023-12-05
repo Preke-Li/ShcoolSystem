@@ -29,4 +29,9 @@ public class ClassServiceImp implements ClassService {
         return classMapper.updateClass(c);
     }
 
+    @Override
+    public Class getByClassId(Integer id) {
+        return classMapper.getByClassId(id);
+    }
+
 }

@@ -11,4 +11,6 @@ public interface ClassService {
     int addClass(Class c);
 
     int updateClass(Class c);
+
+    Class getByClassId(Integer id);
 }
