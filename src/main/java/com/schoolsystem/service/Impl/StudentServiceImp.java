@@ -15,4 +15,9 @@ public class StudentServiceImp implements StudentService {
     public Student getInfoByUsername(String username) {
         return studentMapper.getInfoByUsername(username);
     }
+
+    @Override
+    public int updateStudentPhone(String phone,Integer id) {
+        return studentMapper.updateStudentPhone(phone,id);
+    }
 }

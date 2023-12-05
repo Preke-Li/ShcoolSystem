@@ -7,8 +7,11 @@ import com.schoolsystem.service.MajorService;
 import com.schoolsystem.service.StudentService;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -38,5 +41,14 @@ public class StudentController {
             result.put("position",s.getPosition());
             return Result.success(result);
         }
+    }
+    @PutMapping("student")
+    public Result updateStudentPhone(@NotNull @NotBlank @Size(min=11,max=11) @RequestParam("phone") String phone, @RequestParam("id") Integer id){
+        if (studentService.updateStudentPhone(phone,id)>0){
+            return Result.success("修改成功");
+        }else{
+            return Result.error("修改失败");
+        }
+
     }
 }
