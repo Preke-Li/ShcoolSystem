@@ -18,6 +18,10 @@ public class Student extends Account{
 
     private Integer dormitoryId;
 
+    private Short sex;
+
+    private String avatar;
+
 //    private Short position;
 //    private String username;
 //

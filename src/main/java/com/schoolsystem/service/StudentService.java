@@ -5,5 +5,7 @@ import com.schoolsystem.pojo.Student;
 public interface StudentService {
     Student getInfoByUsername(String username);
 
-    int updateStudentPhone(String phone,Integer id);
+    int updateStudent(String phone,String username,String avatar);
+
+    int addStudent(Student student);
 }

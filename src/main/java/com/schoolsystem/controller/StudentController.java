@@ -9,10 +9,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,25 +28,36 @@ public class StudentController {
     public Result getStudentInfo(@NotNull @NotBlank String username){
         Student s=studentService.getInfoByUsername(username);
         if(s == null){
-            return Result.error("账号不存在");
+            return Result.error("该用户不存在");
         }else{
             Map<String,Object> result=new HashMap<>();
             result.put("name",s.getName());
+            result.put("sex",s.getSex());
             result.put("phone",s.getPhone());
-            result.put("id",s.getId());
+            result.put("username",s.getUsername());
             result.put("major",majorService.getName(s.getMajorId()));
             result.put("position",s.getPosition());
             result.put("dormitoryId",s.getDormitoryId());
+            result.put("avatar",s.getAvatar());
             return Result.success(result);
         }
     }
     @PutMapping("student")
-    public Result updateStudentPhone(@NotNull @NotBlank @Size(min=11,max=11) @RequestParam("phone") String phone, @RequestParam("id") Integer id){
-        if (studentService.updateStudentPhone(phone,id)>0){
+    public Result updateStudentPhone(@NotNull @NotBlank @Size(min=11,max=11) @RequestParam("phone") String phone, @RequestParam("username") String username,@RequestParam("avatar") String avatar){
+        if (studentService.updateStudent(phone,username,avatar)>0){
             return Result.success("修改成功");
         }else{
             return Result.error("修改失败");
         }
 
+    }
+
+    @PostMapping("/student")
+    public Result addStudent(@RequestBody Student student){
+        if(studentService.addStudent(student)>0) {
+            return Result.success("添加学生信息成功");
+        }else {
+            return  Result.error("添加学生失败，请检出输入的参数");
+        }
     }
 }

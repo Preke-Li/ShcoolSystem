@@ -11,12 +11,26 @@ spring:
     username: root
     password: 123456
 
+  #文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 1024MB
+
 #mybaits配置
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     #驼峰命名自动映射
     map-underscore-to-camel-case: true
+
+#阿里云OSS自定义配置
+aliyun:
+  oss:
+    endpoint: https://oss-cn-shenzhen.aliyuncs.com
+    accessKeyId: LTAI5tPRv5neS9sMDPvaencN
+    accessKeySecret: RGPPx1DWxq2x068n5f5YfkFaOsmZYC
+    bucketName: preke-tlais
 
 
 #spring事务管理日志
