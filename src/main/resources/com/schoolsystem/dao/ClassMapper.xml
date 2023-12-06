@@ -23,6 +23,6 @@
 
 
         </set>
-        where id=#{id}
+        where id=#{id} or class_name=#{className}
     </update>
 </mapper>

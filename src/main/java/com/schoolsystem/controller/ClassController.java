@@ -40,7 +40,7 @@ public class ClassController {
 
     @PutMapping("class")
     public Result updateClass(@RequestBody Class c) {
-        log.info("\n要修改的部门信息为：{}", c);
+        log.info("\n要修改的班级信息为：{}", c);
         int result = classService.updateClass(c);
         if (result > 0)
             return Result.success("更新成功");
