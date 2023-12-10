@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
  *把配置文件中的 key：value 映射到实体类中
  */
 
+
 @Data
 @Component
 //批量的将外部的属性配置注入到bean对象的属性中

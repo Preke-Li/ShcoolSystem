@@ -29,6 +29,7 @@ public class UploadController {
 
         String url = aliOSSUtils.upload(avatar);
 
+
         log.info("图片上传成功，文件访问的url为：{}",url);
 
         return Result.success(url);

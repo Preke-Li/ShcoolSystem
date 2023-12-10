@@ -48,6 +48,7 @@ public class AliOSSUtils {
         String originalFilename = file.getOriginalFilename();
         String fileName = UUID.randomUUID().toString() + originalFilename.substring(originalFilename.lastIndexOf("."));
 
+
         log.info("新文件名：{}",fileName);
 
         //上传文件到 OSS

@@ -7,5 +7,6 @@ public interface StudentService {
 
     int updateStudent(String phone,String username,String avatar);
 
+
     int addStudent(Student student);
 }

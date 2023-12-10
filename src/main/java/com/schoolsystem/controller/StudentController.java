@@ -28,6 +28,7 @@ public class StudentController {
     public Result getStudentInfo(@NotNull @NotBlank String username){
         Student s=studentService.getInfoByUsername(username);
         if(s == null){
+
             return Result.error("该用户不存在");
         }else{
             Map<String,Object> result=new HashMap<>();
@@ -43,6 +44,7 @@ public class StudentController {
         }
     }
     @PutMapping("student")
+
     public Result updateStudentPhone(@NotNull @NotBlank @Size(min=11,max=11) @RequestParam("phone") String phone, @RequestParam("username") String username,@RequestParam("avatar") String avatar){
         if (studentService.updateStudent(phone,username,avatar)>0){
             return Result.success("修改成功");

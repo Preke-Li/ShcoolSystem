@@ -14,6 +14,7 @@ public class Student extends Account{
 
     private Integer majorId;
 
+
     private Integer classId;
 
     private Integer dormitoryId;
