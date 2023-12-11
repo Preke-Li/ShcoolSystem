@@ -1,6 +1,7 @@
 package com.schoolsystem.service;
 
 import com.schoolsystem.pojo.DormitoryRecharge;
+import com.schoolsystem.pojo.DormitoryRepair;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface DormitoryService {
     double getWaterBalance(int dormitoryId);
 
     void rechargeWater(int studentId, int dormitoryId, int amount);
+
+    int addRepair(DormitoryRepair dormitoryRepair);
 }

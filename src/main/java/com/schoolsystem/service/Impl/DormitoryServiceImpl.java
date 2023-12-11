@@ -4,6 +4,7 @@ import com.schoolsystem.dao.DormitoryMapper;
 import com.schoolsystem.dao.DormitoryRechargeMapper;
 import com.schoolsystem.pojo.Dormitory;
 import com.schoolsystem.pojo.DormitoryRecharge;
+import com.schoolsystem.pojo.DormitoryRepair;
 import com.schoolsystem.service.DormitoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,6 +81,11 @@ public class DormitoryServiceImpl implements DormitoryService {
             dormitoryMapper.updateDormitory1(dormitory);
 
         }
+    }
+
+    @Override
+    public int addRepair(DormitoryRepair dormitoryRepair) {
+        return dormitoryMapper.addRepair(dormitoryRepair);
     }
 
 

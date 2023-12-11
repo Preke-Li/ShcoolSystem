@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.schoolsystem.dao.ClassMapper">
+    <update id="updateClass">
+        update class
+        <set>
+            <if test="className != null and className!=''">
+                class_name=#{className},
+            </if>
+
+            <if test="people != null and people!=''">
+                people=#{people},
+            </if>
+            <if test="monitorId != null and monitorId != ''">
+                monitor_id=#{monitorId},
+            </if>
+
+            <if test="majorId != null and majorId!=''">
+                major_id=#{majorId}
+            </if>
+
+
+        </set>
+        where id=#{id} or class_name=#{className}
+    </update>
+</mapper>

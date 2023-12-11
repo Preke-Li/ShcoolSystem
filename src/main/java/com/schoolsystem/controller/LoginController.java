@@ -23,8 +23,10 @@ public class LoginController {
     public Result studentLogin(@RequestBody Account account){
         log.info("\n用户登录：\n输入的用户名和密码为：\n账号：{}\n密码：{}",account.getUsername(),account.getPassword());
         Account result=null;
+        //学生用户
         if(account.getPosition() == 1)
          result = loginService.studentLogin(account);
+        //管理员用户
         else if (account.getPosition() == 0) {
             result = loginService.adminLogin(account);
         }
