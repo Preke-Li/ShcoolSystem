@@ -2,8 +2,10 @@ package com.schoolsystem.service;
 
 import com.schoolsystem.pojo.CardRecharge;
 import com.schoolsystem.pojo.Student;
+import com.schoolsystem.pojo.StudentBaseInfo;
 
 import java.util.List;
+import java.util.Map;
 
 public interface StudentService {
     Student getInfoByUsername(String username);
@@ -21,4 +23,5 @@ public interface StudentService {
 
     List<CardRecharge> getCardTransactions(int studentId, String startDate, String endDate);
 
+    List<StudentBaseInfo> getStudentByClassId(Integer id);
 }

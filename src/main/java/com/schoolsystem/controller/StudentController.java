@@ -2,6 +2,7 @@ package com.schoolsystem.controller;
 
 import com.schoolsystem.pojo.Result;
 import com.schoolsystem.pojo.Student;
+import com.schoolsystem.pojo.StudentBaseInfo;
 import com.schoolsystem.service.ClassService;
 import com.schoolsystem.service.MajorService;
 import com.schoolsystem.service.StudentService;
@@ -107,6 +108,16 @@ public class StudentController {
             return Result.success(transactions);
         } catch (Exception e) {
             return Result.error("查询校园卡交易记录失败：" + e.getMessage());
+        }
+    }
+
+    @GetMapping("/getStudentByClassId")
+    public Result getStudentByClassId(Integer id){
+        List<StudentBaseInfo> students=studentService.getStudentByClassId(id);
+        if(!students.isEmpty()){
+            return Result.success(students);
+        }else {
+            return Result.error("该班级不存在，或该班级下没有学生！");
         }
     }
 }
