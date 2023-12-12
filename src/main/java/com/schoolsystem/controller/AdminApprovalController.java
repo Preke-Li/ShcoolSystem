@@ -11,7 +11,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/admin/approval")
 public class AdminApprovalController {
-
     @Autowired
     private AdminApprovalService adminApprovalService;
 
