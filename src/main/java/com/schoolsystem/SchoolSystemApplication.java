@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(scanBasePackages = {"com.schoolsystem.*"})
+@ComponentScan(basePackages = {"com.schoolsystem.*"})
 public class SchoolSystemApplication {
 
     public static void main(String[] args) {
