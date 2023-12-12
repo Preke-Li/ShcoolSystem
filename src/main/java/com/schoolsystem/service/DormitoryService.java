@@ -1,5 +1,6 @@
 package com.schoolsystem.service;
 
+import com.schoolsystem.pojo.Dormitory;
 import com.schoolsystem.pojo.DormitoryRecharge;
 import com.schoolsystem.pojo.DormitoryRepair;
 
@@ -20,4 +21,8 @@ public interface DormitoryService {
     void rechargeWater(int studentId, int dormitoryId, int amount);
 
     int addRepair(DormitoryRepair dormitoryRepair);
+
+    List<Dormitory> selectAllDormitory();
+
+    Dormitory getDormitoryById(Integer id);
 }

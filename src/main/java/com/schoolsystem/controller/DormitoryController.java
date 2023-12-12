@@ -1,5 +1,6 @@
 package com.schoolsystem.controller;
 
+import com.schoolsystem.pojo.Dormitory;
 import com.schoolsystem.pojo.DormitoryRecharge;
 import com.schoolsystem.pojo.DormitoryRepair;
 import com.schoolsystem.pojo.Result;
@@ -102,5 +103,14 @@ public class DormitoryController {
             return Result.success("提交保修成功");
         else
             return Result.error("保修失败");
+    }
+
+    @GetMapping("/getDormitory")
+    public Result getDormitoryById( Integer id){
+        Dormitory dormitoriy = dormitoryService.getDormitoryById(id);
+        if(dormitoriy != null){
+            return Result.success(dormitoriy);
+        }
+        return Result.error("输入的宿舍号错误或者宿舍不存在！！！");
     }
 }
