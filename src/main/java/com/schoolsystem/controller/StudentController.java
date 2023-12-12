@@ -96,12 +96,14 @@ public class StudentController {
         }
     }
 
-    // 4.3 查询校园卡交易记录
-    @GetMapping("/card/transactions")
-    public Result getCardTransactions(@RequestParam int studentId) {
+    @PostMapping("/card/transactions")
+    public Result getCardTransactions(@RequestBody Map<String, String> requestData) {
         try {
+            int studentId = Integer.parseInt(requestData.get("studentId"));
+            String startDate = requestData.get("startDate");
+            String endDate = requestData.get("endDate");
             // 调用 Service 层方法获取校园卡交易记录
-            List<CardRecharge> transactions = studentService.getCardTransactions(studentId);
+            List<CardRecharge> transactions = studentService.getCardTransactions(studentId, startDate, endDate);
             return Result.success(transactions);
         } catch (Exception e) {
             return Result.error("查询校园卡交易记录失败：" + e.getMessage());

@@ -18,5 +18,7 @@ public interface StudentService {
     // 校园卡充值
     void rechargeCard(int studentId, int amount);
 
-    List<CardRecharge> getCardTransactions(int studentId);
+
+    List<CardRecharge> getCardTransactions(int studentId, String startDate, String endDate);
+
 }

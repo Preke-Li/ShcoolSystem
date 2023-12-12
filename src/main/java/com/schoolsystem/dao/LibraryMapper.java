@@ -10,8 +10,9 @@ import java.util.List;
 @Mapper
 public interface LibraryMapper {
 
-    @Select("SELECT * FROM book_transaction WHERE student_id = #{studentId}")
-    List<BookTransaction> getLibraryTransactions(int studentId);
+
+    @Select("SELECT * FROM book_transaction WHERE student_id = #{studentId} AND borrow_date >= #{startDate} AND borrow_date <= #{endDate}")
+    List<BookTransaction> getLibraryTransactions(int studentId, String startDate, String endDate);
 
     @Insert("INSERT INTO book_transaction (student_id, book_id) VALUES (#{studentId}, #{bookId})")
     void borrowBook(int studentId, int bookId);

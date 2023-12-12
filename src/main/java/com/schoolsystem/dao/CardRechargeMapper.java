@@ -15,6 +15,7 @@ public interface CardRechargeMapper {
     void insertCardRecharge(CardRecharge cardRecharge);
 
 
-    @Select("SELECT * FROM card_recharge WHERE student_id = #{studentId}")
-    List<CardRecharge> getCardTransactions(int studentId);
+    @Select("SELECT * FROM card_recharge WHERE student_id = #{studentId} AND date >= #{startDate} AND date <= #{endDate}")
+    List<CardRecharge> getCardTransactions(int studentId, String startDate, String endDate);
+
 }

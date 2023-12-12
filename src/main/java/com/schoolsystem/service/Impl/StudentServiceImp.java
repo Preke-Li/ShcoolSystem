@@ -71,9 +71,10 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
-    public List<CardRecharge> getCardTransactions(int studentId) {
-        return cardRechargeMapper.getCardTransactions(studentId);
+    public List<CardRecharge> getCardTransactions(int studentId, String startDate, String endDate) {
+        return cardRechargeMapper.getCardTransactions(studentId, startDate, endDate);
     }
+
 
     @Override
     public Student getInfoByUsername(String username) {

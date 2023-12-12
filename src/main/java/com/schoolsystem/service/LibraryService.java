@@ -6,7 +6,8 @@ import com.schoolsystem.pojo.BookTransaction;
 public interface LibraryService {
 
     // 查询图书借阅记录
-    List<BookTransaction> getLibraryTransactions(int studentId);
+    List<BookTransaction> getLibraryTransactions(int studentId, String startDate, String endDate);
+
 
     // 图书借阅申请
     void borrowBook(int studentId, int bookId);

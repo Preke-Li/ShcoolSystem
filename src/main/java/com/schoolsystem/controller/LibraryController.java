@@ -17,11 +17,14 @@ public class LibraryController {
     private LibraryService libraryService;
 
     // 6.1 查询图书借阅记录
-    @GetMapping("/library/transactions")
-    public Result getLibraryTransactions(@RequestParam("studentId") int studentId) {
+    @PostMapping("/library/transactions")
+    public Result getLibraryTransactions(@RequestBody Map<String, String> requestData) {
         try {
+            int studentId = Integer.parseInt(requestData.get("studentId"));
+            String startDate = requestData.get("startDate");
+            String endDate = requestData.get("endDate");
             // 调用 Service 层方法获取图书借阅记录
-            List<BookTransaction> transactions = libraryService.getLibraryTransactions(studentId);
+            List<BookTransaction> transactions = libraryService.getLibraryTransactions(studentId, startDate, endDate);
             return Result.success(transactions);
         } catch (Exception e) {
             return Result.error("查询图书借阅记录失败：" + e.getMessage());

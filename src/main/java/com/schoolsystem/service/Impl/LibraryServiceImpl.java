@@ -14,12 +14,12 @@ public class LibraryServiceImpl implements LibraryService {
     @Autowired
     private LibraryMapper libraryMapper; // 需要创建一个 LibraryMapper 接口来处理数据库操作
 
-    @Override
-    public List<BookTransaction> getLibraryTransactions(int studentId) {
-        // 实现查询图书借阅记录的业务逻辑，调用 LibraryMapper 进行数据库操作
-        return libraryMapper.getLibraryTransactions(studentId);
-    }
 
+    @Override
+    public List<BookTransaction> getLibraryTransactions(int studentId, String startDate, String endDate) {
+        // 实现查询图书借阅记录的业务逻辑，调用 LibraryMapper 进行数据库操作
+        return libraryMapper.getLibraryTransactions(studentId, startDate, endDate);
+    }
     @Override
     public void borrowBook(int studentId, int bookId) {
         // 实现图书借阅申请的业务逻辑，调用 LibraryMapper 进行数据库操作
