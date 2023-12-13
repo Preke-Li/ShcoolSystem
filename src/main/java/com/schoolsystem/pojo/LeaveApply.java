@@ -12,6 +12,8 @@ public class LeaveApply {
     private int status;
     private String theme;
 
+    private Timestamp applyDate;
+
     public int getId() {
         return id;
     }
@@ -74,5 +76,14 @@ public class LeaveApply {
 
     public void setTheme(String theme) {
         this.theme = theme;
+    }
+
+
+    public Timestamp getApplyDate() {
+        return applyDate;
+    }
+
+    public void setApplyDate(Timestamp applyDate) {
+        this.applyDate = applyDate;
     }
 }
