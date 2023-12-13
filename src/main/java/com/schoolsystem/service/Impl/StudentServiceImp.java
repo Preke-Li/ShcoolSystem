@@ -3,18 +3,17 @@ package com.schoolsystem.service.Impl;
 import com.schoolsystem.dao.CardMapper;
 import com.schoolsystem.dao.CardRechargeMapper;
 import com.schoolsystem.dao.StudentMapper;
-import com.schoolsystem.pojo.Card;
-import com.schoolsystem.pojo.CardRecharge;
+import com.schoolsystem.pojo.*;
 import com.schoolsystem.dao.ClassMapper;
 import com.schoolsystem.dao.StudentMapper;
 import com.schoolsystem.pojo.Class;
-import com.schoolsystem.pojo.Student;
 import com.schoolsystem.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class StudentServiceImp implements StudentService {
@@ -73,6 +72,11 @@ public class StudentServiceImp implements StudentService {
     @Override
     public List<CardRecharge> getCardTransactions(int studentId, String startDate, String endDate) {
         return cardRechargeMapper.getCardTransactions(studentId, startDate, endDate);
+    }
+
+    @Override
+    public List<StudentBaseInfo> getStudentByClassId(Integer id) {
+        return studentMapper.getStudentByClassId(id);
     }
 
 

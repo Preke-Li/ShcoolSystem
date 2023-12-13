@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 @Mapper
 public interface DormitoryMapper {
 
@@ -21,4 +23,7 @@ public interface DormitoryMapper {
 
     @Insert("insert into repair_apply(id, student_id, dormitory_id, repair_type, phone, description) VALUES (#{studentId},#{repairType},#{phone},#{description})")
     int addRepair(DormitoryRepair dormitoryRepair);
+
+    @Select("select * from dormitory")
+    List<Dormitory> selectAllDormitory();
 }

@@ -88,5 +88,15 @@ public class DormitoryServiceImpl implements DormitoryService {
         return dormitoryMapper.addRepair(dormitoryRepair);
     }
 
+    @Override
+    public List<Dormitory> selectAllDormitory() {
+        return dormitoryMapper.selectAllDormitory();
+    }
+
+    @Override
+    public Dormitory getDormitoryById(Integer id) {
+        return dormitoryMapper.getDormitoryById(id);
+    }
+
 
 }
