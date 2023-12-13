@@ -16,4 +16,6 @@ public interface LeaveService {
     LeaveApply getLeaveDetail(int leaveApplyId);
 
     Map<String, Object> getLeaveDetailWithApproval(int leaveApplyId);
+
+    List<LeaveApply> getApply();
 }

@@ -27,4 +27,6 @@ public interface LeaveMapper {
     LeaveApply getLeaveDetail(int leaveApplyId);
 
 
+    @Select("SELECT * FROM leave_apply WHERE status =2")
+    List<LeaveApply> getApply();
 }

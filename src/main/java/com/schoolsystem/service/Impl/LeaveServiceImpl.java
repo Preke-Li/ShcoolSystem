@@ -89,4 +89,9 @@ public class LeaveServiceImpl implements LeaveService {
             return new Timestamp(parsedDate.getTime());
         }
     }
+
+    @Override
+    public  List<LeaveApply> getApply(){
+        return leaveMapper.getApply();
+    }
 }
