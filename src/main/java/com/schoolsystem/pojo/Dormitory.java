@@ -4,18 +4,18 @@ import java.util.Date;
 
 public class Dormitory {
     private int id;
-    private int electricity;
-    private int water;
+    private double electricity;
+    private double water;
 
     public int getId() {
         return id;
     }
 
-    public int getElectricity() {
+    public double getElectricity() {
         return electricity;
     }
 
-    public void setElectricity(int electricity) {
+    public void setElectricity(double electricity) {
         this.electricity = electricity;
     }
 
@@ -23,11 +23,11 @@ public class Dormitory {
         this.id = id;
     }
 
-    public int getWater() {
+    public double getWater() {
         return water;
     }
 
-    public void setWater(int water) {
+    public void setWater(double water) {
         this.water = water;
     }
 }

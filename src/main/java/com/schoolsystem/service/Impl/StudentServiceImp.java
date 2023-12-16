@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -30,44 +31,42 @@ public class StudentServiceImp implements StudentService {
     @Autowired
     private CardRechargeMapper cardRechargeMapper;
 
+
     @Override
     public double getCardBalance(int studentId) {
         // 直接使用 studentId 查询 card 表
         Card card = cardMapper.getCardById(studentId);
 
         if (card != null) {
-            return Double.parseDouble(card.getBalance());
+            return card.getBalance();
         }
 
         return 0.0;
     }
 
-    @Override
-    @Transactional
-    public void rechargeCard(int studentId, int amount) {
+    public void rechargeCard(int studentId, BigDecimal amount) {
         Card card = cardMapper.getCardById(studentId);
 
         if (card != null) {
-            double currentBalance = Double.parseDouble(card.getBalance());
-            double newBalance = currentBalance + amount;
+            BigDecimal currentBalance = BigDecimal.valueOf(card.getBalance());
+            BigDecimal newBalance = currentBalance.add(amount);
+            card.setBalance(newBalance.doubleValue()); // 将 BigDecimal 转换为 double
 
-            if (newBalance >= 0) {
-                // 更新卡的余额
-                card.setBalance(String.valueOf(newBalance));
-                cardMapper.updateCard(card);
+            cardMapper.updateCard(card);
 
-                // 创建充值记录
-                CardRecharge cardRecharge = new CardRecharge();
-                cardRecharge.setStudentId(studentId);
-                cardRecharge.setMoney(amount);
-                cardRechargeMapper.insertCardRecharge(cardRecharge);
-            } else {
-                throw new RuntimeException("余额不足，充值失败");
-            }
+            // 创建充值记录
+            CardRecharge cardRecharge = new CardRecharge();
+            cardRecharge.setStudentId(studentId);
+            cardRecharge.setMoney(amount.doubleValue()); //
+            cardRechargeMapper.insertCardRecharge(cardRecharge);
         } else {
-            throw new RuntimeException("卡不存在，充值失败");
+            throw new IllegalArgumentException("无效的学生ID：" + studentId);
         }
     }
+
+
+
+
 
     @Override
     public List<CardRecharge> getCardTransactions(int studentId, String startDate, String endDate) {

@@ -1,13 +1,15 @@
 package com.schoolsystem.controller;
 
-import com.schoolsystem.pojo.Dormitory;
-import com.schoolsystem.pojo.DormitoryRecharge;
-import com.schoolsystem.pojo.DormitoryRepair;
-import com.schoolsystem.pojo.Result;
+import com.schoolsystem.pojo.*;
 import com.schoolsystem.service.DormitoryService;
+import com.schoolsystem.service.BalanceService;
+import com.schoolsystem.pojo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +19,8 @@ public class DormitoryController {
 
     @Autowired
     private DormitoryService dormitoryService;
+    @Autowired
+    private BalanceService balanceService;
 
     // 5.1 查询电费余额
     @GetMapping("/electricity/balance")
@@ -29,18 +33,17 @@ public class DormitoryController {
         }
     }
 
-    // 5.2 电费充值
     @PostMapping("/electricity/recharge")
     public Result rechargeElectricity(@RequestBody Map<String, Object> requestData) {
         try {
             Integer studentIdObj = (Integer) requestData.get("studentId");
             Integer dormitoryIdObj = (Integer) requestData.get("dormitoryId");
-            Integer amountObj = (Integer) requestData.get("amount");
+            Double amountObj = (Double) requestData.get("amount");
 
             if (studentIdObj != null && dormitoryIdObj != null && amountObj != null) {
                 int studentId = studentIdObj.intValue();
                 int dormitoryId = dormitoryIdObj.intValue();
-                int amount = amountObj.intValue();
+                double amount = amountObj;
 
                 dormitoryService.rechargeElectricity(studentId, dormitoryId, amount);
                 return Result.success("电费充值成功");
@@ -52,10 +55,10 @@ public class DormitoryController {
         }
     }
 
+
     @GetMapping("/electricity/recharge/history")
     public Result getRechargeHistory(@RequestParam int dormitoryId) {
         try {
-            // 调用 Service 层方法获取充值记录
             List<DormitoryRecharge> rechargeHistory = dormitoryService.getRechargeHistory(dormitoryId);
             return Result.success(rechargeHistory);
         } catch (Exception e) {
@@ -63,7 +66,6 @@ public class DormitoryController {
         }
     }
 
-    //  查询水费余额
     @GetMapping("/water/balance")
     public Result getWaterBalance(@RequestParam int dormitoryId) {
         try {
@@ -74,18 +76,17 @@ public class DormitoryController {
         }
     }
 
-    //  水费充值
     @PostMapping("/water/recharge")
     public Result rechargeWater(@RequestBody Map<String, Object> requestData) {
         try {
             Integer studentIdObj = (Integer) requestData.get("studentId");
             Integer dormitoryIdObj = (Integer) requestData.get("dormitoryId");
-            Integer amountObj = (Integer) requestData.get("amount");
+            Double amountObj = (Double) requestData.get("amount");
 
             if (studentIdObj != null && dormitoryIdObj != null && amountObj != null) {
                 int studentId = studentIdObj.intValue();
                 int dormitoryId = dormitoryIdObj.intValue();
-                int amount = amountObj.intValue();
+                double amount = amountObj;
 
                 dormitoryService.rechargeWater(studentId, dormitoryId, amount);
                 return Result.success("水费充值成功");
@@ -96,6 +97,18 @@ public class DormitoryController {
             return Result.error("水费充值失败：" + e.getMessage());
         }
     }
+
+    @GetMapping("/dailyBalances")
+    public Result getDailyBalances(@RequestParam int dormitoryId) {
+        try {
+            List<Balance> dailyBalances = balanceService.getDailyBalances(dormitoryId);
+            return Result.success(dailyBalances);
+        } catch (Exception e) {
+            return Result.error("查询每日余额失败：" + e.getMessage());
+        }
+    }
+
+
 
     @PostMapping("/dormitoryRepair")
     public Result commitRepair(@RequestBody DormitoryRepair dormitoryRepair) {

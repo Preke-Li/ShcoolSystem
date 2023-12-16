@@ -1,18 +1,19 @@
 package com.schoolsystem.pojo;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class CardRecharge {
     private int id;
     private int studentId;
     private Timestamp date;
-    private int money;
+    private double money;
     private int type;
 
     public CardRecharge() {
     }
 
-    public CardRecharge(int studentId, int money) {
+    public CardRecharge(int studentId, double money) {
         this.studentId = studentId;
         this.money = money;
     }
@@ -41,11 +42,11 @@ public class CardRecharge {
         this.date = date;
     }
 
-    public int getMoney() {
+    public double getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(double money) {
         this.money = money;
     }
 
@@ -56,4 +57,7 @@ public class CardRecharge {
     public void setType(int type) {
         this.type = type;
     }
+
+//    public void setMoney(BigDecimal amount) {this.money = amount;
+//    }
 }

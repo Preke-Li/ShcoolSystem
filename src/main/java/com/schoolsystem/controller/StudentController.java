@@ -15,7 +15,7 @@ import com.schoolsystem.pojo.CardRecharge;
 import com.schoolsystem.service.StudentService;
 
 
-
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -82,20 +82,20 @@ public class StudentController {
         }
     }
 
-
-    // 4.2 校园卡充值
     @PostMapping("/card/recharge")
-    public Result rechargeCard(@RequestBody Map<String, Integer> requestData) {
+    public Result rechargeCard(@RequestBody Map<String, Object> requestData) {
         try {
-            int studentId = requestData.get("studentId");
-            int amount = requestData.get("amount");
-            // 调用 Service 层方法进行校园卡充值
+            int studentId = (int) requestData.get("studentId");
+            BigDecimal amount = new BigDecimal(requestData.get("amount").toString());
+
             studentService.rechargeCard(studentId, amount);
+
             return Result.success("校园卡充值成功");
         } catch (Exception e) {
             return Result.error("校园卡充值失败：" + e.getMessage());
         }
     }
+
 
     @PostMapping("/card/transactions")
     public Result getCardTransactions(@RequestBody Map<String, String> requestData) {

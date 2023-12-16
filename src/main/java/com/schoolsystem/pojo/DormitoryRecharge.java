@@ -5,7 +5,7 @@ import java.util.Date;
 public class DormitoryRecharge {
     private int id;
     private int dormitoryId;
-    private int amount;
+    private double amount;
     private Date date;
     private int studentId;
 
@@ -25,11 +25,11 @@ public class DormitoryRecharge {
         this.dormitoryId = dormitoryId;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
