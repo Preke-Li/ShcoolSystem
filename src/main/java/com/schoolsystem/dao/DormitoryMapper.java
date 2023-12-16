@@ -21,7 +21,7 @@ public interface DormitoryMapper {
     @Update("UPDATE dormitory SET water = #{water} WHERE id = #{id}")
     void updateDormitory1(Dormitory dormitory);
 
-    @Insert("insert into repair_apply(id, student_id, dormitory_id, repair_type, phone, description) VALUES (#{studentId},#{repairType},#{phone},#{description})")
+    @Insert("insert into repair_apply(student_id, dormitory_id, repair_type, phone, description) VALUES (#{studentId},#{dormitoryId},#{repairType},#{phone},#{description})")
     int addRepair(DormitoryRepair dormitoryRepair);
 
     @Select("select * from dormitory")
