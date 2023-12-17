@@ -85,6 +85,11 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
+    public Student getInfoById(Integer id) {
+        return studentMapper.getInfoById(id);
+    }
+
+    @Override
     public int updateStudent(String phone,String username,String avatar) {
         return studentMapper.updateStudent(phone,username,avatar);
     }

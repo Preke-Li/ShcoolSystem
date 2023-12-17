@@ -3,6 +3,7 @@ package com.schoolsystem.controller;
 import com.schoolsystem.pojo.LeaveApply;
 import com.schoolsystem.pojo.Result;
 import com.schoolsystem.service.LeaveService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/student/leave")
+@Slf4j
 public class LeaveController {
 
     @Autowired
@@ -26,7 +28,7 @@ public class LeaveController {
             String beginDate = (String) requestData.get("beginDate");
             String endDate = (String) requestData.get("endDate");
             String theme = (String) requestData.get("theme");
-
+            log.info(String.valueOf(requestData));
             leaveService.applyLeave(studentId, reason, courseId, beginDate, endDate, theme);
             return Result.success("请假申请成功");
         } catch (Exception e) {

@@ -6,8 +6,19 @@ public class LeaveApply {
     private int id;
     private int studentId;
     private String reason;
-    private int couresId;
+    private int courseId;
+
+    private String studentName;
     private Timestamp beginDate;
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
     private Timestamp endDate;
     private int status;
     private String theme;
@@ -38,12 +49,12 @@ public class LeaveApply {
         this.reason = reason;
     }
 
-    public int getCouresId() {
-        return couresId;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCouresId(int courseId) {
-        this.couresId = couresId;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public Timestamp getBeginDate() {

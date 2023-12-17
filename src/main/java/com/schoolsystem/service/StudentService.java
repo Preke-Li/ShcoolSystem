@@ -11,6 +11,8 @@ import java.util.Map;
 public interface StudentService {
     Student getInfoByUsername(String username);
 
+    Student getInfoById(Integer id);
+
     int updateStudent(String phone,String username,String avatar);
 
 

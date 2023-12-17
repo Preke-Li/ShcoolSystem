@@ -22,4 +22,7 @@ public interface StudentMapper {
 
     @Select("select id,username,name,sex from student where class_id=#{classId}")
     List<StudentBaseInfo> getStudentByClassId(Integer id);
+
+    @Select("select * from student where id=#{id}")
+    Student getInfoById(Integer id);
 }

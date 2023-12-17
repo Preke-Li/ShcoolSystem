@@ -9,8 +9,8 @@ import java.util.List;
 @Mapper
 public interface LeaveMapper {
 
-    @Insert("INSERT INTO leave_apply (student_id, reason, coures_id, begin_date, end_date, theme) " +
-            "VALUES (#{studentId}, #{reason}, #{couresId}, #{beginDate}, #{endDate}, #{theme})")
+    @Insert("INSERT INTO leave_apply (student_id, student_name,reason, coures_id, begin_date, end_date, theme) " +
+            "VALUES (#{studentId}, #{studentName},#{reason}, #{courseId}, #{beginDate}, #{endDate}, #{theme})")
     void applyLeave(LeaveApply leaveApply);
 
     @Select("SELECT * FROM leave_apply WHERE student_id = #{studentId}")
