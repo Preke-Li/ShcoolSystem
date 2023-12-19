@@ -17,6 +17,9 @@ spring:
       max-file-size: 50MB
       max-request-size: 1024MB
 
+  jackson:
+    time-zone: GMT+8
+
 #mybaits配置
 mybatis:
   configuration:
