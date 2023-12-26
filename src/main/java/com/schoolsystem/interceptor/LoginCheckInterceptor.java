@@ -37,7 +37,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         if(!StringUtils.hasLength(token)){
             log.info("token不存在");
 
-            Result responseResult = Result.error("NOT_LOGIN");
+            Result responseResult = Result.error(-1,"NOT_LOGIN");
             //把Result对象转换为JSON格式字符串 (fastjson是阿里巴巴提供的用于实现对象和json的转换工具类)
             String json= JSONObject.toJSONString(responseResult);
             response.setContentType("application/json;charset=utf-8");
@@ -53,7 +53,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         }catch (Exception e){
             log.info("令牌解析失败!");
 
-            Result responseResult = Result.error("NOT_LOGIN");
+            Result responseResult = Result.error(-1,"NOT_LOGIN");
             //把Result对象转换为JSON格式字符串 (fastjson是阿里巴巴提供的用于实现对象和json的转换工具类)
             String json = JSONObject.toJSONString(responseResult);
             response.setContentType("application/json;charset=utf-8");
