@@ -10,7 +10,7 @@ import java.util.Map;
 public class JwtUtils {
 
     private static String signKey = "preke";
-    private static Long expire = 43200000L;  //12小时的时间戳
+    private static Long expire = 404800000L;  //12小时的时间戳
 
     /**
      * 生成JWT令牌
