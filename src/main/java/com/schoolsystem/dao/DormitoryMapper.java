@@ -13,7 +13,7 @@ import java.util.List;
 public interface DormitoryMapper {
 
     @Select("SELECT * FROM dormitory WHERE id = #{dormitoryId}")
-    Dormitory getDormitoryById(int dormitoryId);
+    Dormitory getDormitoryById(Integer dormitoryId);
 
     @Update("UPDATE dormitory SET electricity = #{electricity} WHERE id = #{id}")
     void updateDormitory(Dormitory dormitory);

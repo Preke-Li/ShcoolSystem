@@ -119,10 +119,10 @@ public class DormitoryController {
     }
 
     @GetMapping("/getDormitory")
-    public Result getDormitoryById( Integer id){
-        Dormitory dormitoriy = dormitoryService.getDormitoryById(id);
-        if(dormitoriy != null){
-            return Result.success(dormitoriy);
+    public Result getDormitoryById( Integer dormitoryId){
+        Dormitory dormitory = dormitoryService.getDormitoryById(dormitoryId);
+        if(dormitory != null){
+            return Result.success(dormitory);
         }
         return Result.error("输入的宿舍号错误或者宿舍不存在！！！");
     }
